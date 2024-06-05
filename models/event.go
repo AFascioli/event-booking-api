@@ -15,31 +15,29 @@ type Event struct {
 	UserID      int
 }
 
-var events []Event = []Event{}
+var events = []Event{}
 
 func (e Event) Save() error {
 	query := `
-	INSERT INTO events(name, description, location, dateTime, user_id)
+	INSERT INTO events(name, description, location, dateTime, user_id) 
 	VALUES (?, ?, ?, ?, ?)`
 	// ?: placeholder for params taken in the exec()
 	stmt, err := db.Database.Prepare(query)
 	if err != nil {
 		return err
 	}
-
 	defer stmt.Close()
 	result, err := stmt.Exec(e.Name, e.Description, e.Location, e.DateTime, e.UserID)
 	if err != nil {
 		return err
 	}
-
 	id, err := result.LastInsertId()
 	e.ID = id
 	return err
 }
 
 func GetAllEvents() ([]Event, error) {
-	query := `SELECT * FROM events`
+	query := "SELECT * FROM events"
 	rows, err := db.Database.Query(query)
 	if err != nil {
 		return nil, err

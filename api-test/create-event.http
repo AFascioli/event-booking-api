@@ -5,5 +5,5 @@ content-type: application/json
     "name": "event name",
     "description": "event description",
     "location": "event location",
-    "dateTime": "2024-12-02-01T16:30:00.000Z"
+    "dateTime": "2025-01-01T15:30:00.000Z"
 }
