@@ -1,5 +1,5 @@
 POST http://localhost:8080/events
-content-type: application/json
+Content-Type: application/json 
 
 {
     "name": "event name",
